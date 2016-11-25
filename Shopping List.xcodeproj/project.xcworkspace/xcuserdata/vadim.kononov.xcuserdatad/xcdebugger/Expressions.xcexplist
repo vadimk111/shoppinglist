@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ItemTableViewCell.populate(item : Item) -&gt; ():ItemTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TodayViewController.viewDidLoad() -&gt; ():TodayViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.preferredContentSize">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
