@@ -55,7 +55,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="KXg-av-0eD"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuz-rX-xP9">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="fuz-rX-xP9">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="M0A-KI-0im"/>
@@ -63,7 +63,7 @@
                                 <items>
                                     <barButtonItem style="plain" id="m19-i1-bay">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DRw-Jr-aNB">
-                                            <rect key="frame" x="16" y="7" width="46" height="30"/>
+                                            <rect key="frame" x="313" y="7" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="שתף"/>
                                             <connections>
@@ -73,11 +73,21 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="srK-t7-i3L">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SR5-4Q-qdA">
-                                            <rect key="frame" x="72" y="7" width="46" height="30"/>
+                                            <rect key="frame" x="257" y="7" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="נקה"/>
                                             <connections>
                                                 <action selector="didTapClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qkU-iW-Rs8"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="SLr-nn-UQ0">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="vPl-xG-0tE">
+                                            <rect key="frame" x="198" y="7" width="49" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="הסתר מסומנים"/>
+                                            <connections>
+                                                <action selector="didTapHide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fKh-Mg-box"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>

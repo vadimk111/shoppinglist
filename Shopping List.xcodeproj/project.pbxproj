@@ -40,6 +40,7 @@
 		3C3DD1E2C2B98D27CBD649E2 /* Pods_Shopping_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCC550D614446D7958DA904 /* Pods-Shopping List Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopping List Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shopping List Widget/Pods-Shopping List Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		BF37A97A1DE62515005FE8E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF63EC721DE8C36100583773 /* Shopping List.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shopping List.entitlements"; sourceTree = "<group>"; };
 		BF8916B81DE7871E00B6684A /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		BFCC43E71DD10E8900C77D31 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCC43EA1DD10E8900C77D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		BFCC43E91DD10E8900C77D31 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				BF63EC721DE8C36100583773 /* Shopping List.entitlements */,
 				BFCC43EA1DD10E8900C77D31 /* AppDelegate.swift */,
 				BFCC43F11DD10E8900C77D31 /* Assets.xcassets */,
 				BF37A97A1DE62515005FE8E1 /* GoogleService-Info.plist */,
@@ -176,6 +178,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = C57Q64SZ95;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -402,12 +409,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shopping List/Shopping List.entitlements";
 				DEVELOPMENT_TEAM = C57Q64SZ95;
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.home.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "72eabfa9-e1e1-4721-bd60-558b000553e6";
+				PROVISIONING_PROFILE = "402c007e-3ba3-4407-ab3c-0d6252a830ea";
 				PROVISIONING_PROFILE_SPECIFIER = shoppingList_dev;
 				SWIFT_VERSION = 3.0;
 			};
@@ -419,14 +427,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = "Shopping List/Shopping List.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: vadim kononov (C57Q64SZ95)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: vadim kononov (C57Q64SZ95)";
 				DEVELOPMENT_TEAM = C57Q64SZ95;
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.home.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbd490d0-9530-4028-92d3-18d78dda5ce8";
-				PROVISIONING_PROFILE_SPECIFIER = shoppingList_dist;
+				PROVISIONING_PROFILE = "f52830bd-8f9f-41fc-8129-926432930526";
+				PROVISIONING_PROFILE_SPECIFIER = shoppingList_distPush;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

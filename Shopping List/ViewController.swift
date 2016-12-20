@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var list: FIRDatabaseReference!
     var items: [Item] = []
+    var showCompleted = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,13 +48,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         loadList()
     }
     
+    func getItems() -> [Item] {
+        return showCompleted ?  items : items.filter() { $0.isSelected == false }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return getItems().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemTableViewCell
-        cell.populate(item: items[indexPath.row])
+        cell.populate(item: getItems()[indexPath.row])
         return cell
     }
     
@@ -68,7 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
+        let item = getItems()[indexPath.row]
         item.markSelected(!item.isSelected)
     }
     
@@ -82,7 +87,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            items[indexPath.row].delete()
+            getItems()[indexPath.row].delete()
         }
     }
 
@@ -94,7 +99,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func didTapClear(_ sender: UIButton) {
-        list.removeValue()
+        let a = UIAlertController(title: "למחוק את כל הפריטים?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        a.addAction(UIAlertAction(title: "אישור", style: .default) { action -> Void in
+            self.list.removeValue()
+        })
+        a.addAction(UIAlertAction(title: "ביטול", style: .default) { action -> Void in })
+        self.present(a, animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapHide(_ sender: UIButton) {
+        showCompleted = !showCompleted
+        tableView.reloadData()
+        
+        var str: String
+        if showCompleted {
+            str = "הסתר מסומנים"
+        } else {
+            str = "הראה מסומנים"
+        }
+        sender.setTitle(str, for: UIControlState.normal)
     }
     
     @IBAction func didTapShare(_ sender: UIButton) {
