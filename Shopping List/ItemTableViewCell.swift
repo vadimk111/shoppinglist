@@ -10,7 +10,7 @@ import UIKit
 
 class ItemTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var label: CustomLabel!
    
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,10 +25,29 @@ class ItemTableViewCell: UITableViewCell {
 
     
     func populate(item: Item) {
-        if !item.isSelected {
-            label.attributedText = NSAttributedString(string: item.title, attributes: [:])
+        let att = NSMutableAttributedString(string: item.title)
+        let range = NSMakeRange(0, item.title.characters.count)
+        att.addAttributes([NSFontAttributeName: UIFont.init(name: "HelveticaNeue", size: 18) as Any], range: range)
+        if item.isSelected {
+            att.addAttributes([NSStrikethroughStyleAttributeName: NSNumber(value: NSUnderlineStyle.styleThick.rawValue)], range: range)
+        }
+        label.attributedText = att
+    }
+}
+
+final class CustomLabel: UILabel {
+    
+    override func drawText(in rect: CGRect) {
+        guard let attributedText = attributedText else {
+            super.drawText(in: rect)
+            return
+        }
+        
+        if #available(iOS 10.3, *) {
+            attributedText.draw(in: rect)
         } else {
-            label.attributedText = NSAttributedString(string: item.title, attributes: [NSStrikethroughStyleAttributeName: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue)])
+            super.drawText(in: rect)
         }
     }
 }
+

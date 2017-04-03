@@ -413,7 +413,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Shopping List/Shopping List.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C57Q64SZ95;
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.home.Shopping-List";
@@ -433,7 +433,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Shopping List/Shopping List.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: vadim kononov (C57Q64SZ95)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C57Q64SZ95;
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.home.Shopping-List";
