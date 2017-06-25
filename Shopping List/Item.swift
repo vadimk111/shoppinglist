@@ -44,4 +44,10 @@ class Item: NSObject {
     func markSelected(_ isSelected: Bool) {
         ref?.updateChildValues([isSelectedKey : isSelected])
     }
+    
+    func updateTitle(_ text: String?) {
+        if let _ = text {
+            ref?.updateChildValues([titleKey : text!])
+        }
+    }
 }

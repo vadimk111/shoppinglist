@@ -9,9 +9,10 @@
 import UIKit
 import FirebaseDatabase
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NewItemTableViewHeaderDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NewItemTableViewHeaderDelegate, ItemTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
     var list: FIRDatabaseReference!
     var items: [Item] = []
@@ -21,6 +22,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardDidShow, object: nil, queue: nil, using: { (notification: Notification) in
+            if let bounds = notification.userInfo?["UIKeyboardBoundsUserInfoKey"] as? CGRect {
+                self.tableBottomConstraint.constant = bounds.height - 44
+            }
+        })
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: nil, using: { (notification: Notification) in
+            self.tableBottomConstraint.constant = 0
+        })
+        
         loadList()
     }
     
@@ -59,6 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemTableViewCell
         cell.populate(item: getItems()[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -81,13 +92,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return true
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.delete
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var actions = [UITableViewRowAction]()
+        
+        let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "ערוך", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+            tableView.setEditing(false, animated: true)
+            let cell = tableView.cellForRow(at: indexPath) as! ItemTableViewCell
+            cell.edit()
+        })
+        actions.append(edit)
+        
+        let delete = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "מחק", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+            self.getItems()[indexPath.row].delete()
+        })
+        actions.append(delete)
+        
+        return actions
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            getItems()[indexPath.row].delete()
+    func itemTableViewCell(_ itemTableViewCell: ItemTableViewCell, endEditingWith text: String?) {
+        if let indexPath = tableView.indexPath(for: itemTableViewCell) {
+            getItems()[indexPath.row].updateTitle(text)
         }
     }
 
@@ -97,7 +122,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             list.childByAutoId().setValue(Item(title: str!, isSelected: false).toAnyObject())
         }
     }
-    
+        
     @IBAction func didTapClear(_ sender: UIButton) {
         let a = UIAlertController(title: "למחוק את כל הפריטים?", message: "", preferredStyle: UIAlertControllerStyle.alert)
         a.addAction(UIAlertAction(title: "אישור", style: .default) { action -> Void in

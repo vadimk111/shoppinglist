@@ -8,10 +8,22 @@
 
 import UIKit
 
-class ItemTableViewCell: UITableViewCell {
+protocol ItemTableViewCellDelegate : class {
+    func itemTableViewCell(_ itemTableViewCell: ItemTableViewCell, endEditingWith text: String?)
+}
 
+class ItemTableViewCell: UITableViewCell, UITextFieldDelegate {
+
+    weak var delegate: ItemTableViewCellDelegate?
+    
     @IBOutlet weak var label: CustomLabel!
-   
+    @IBOutlet weak var editView: UIView!
+    @IBOutlet weak var textField: UITextField! {
+        didSet {
+            textField.delegate = self
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +34,6 @@ class ItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
     
     func populate(item: Item) {
         let att = NSMutableAttributedString(string: item.title)
@@ -33,6 +44,22 @@ class ItemTableViewCell: UITableViewCell {
         }
         label.attributedText = att
     }
+    
+    @IBAction func didTapEndEditing(_ sender: UIButton) {
+        textField.resignFirstResponder()
+    }
+    
+    func edit() {
+        textField.text =  label.text
+        editView.isHidden = false
+        textField.becomeFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        editView.isHidden = true
+        delegate?.itemTableViewCell(self, endEditingWith: textField.text)
+    }
+    
 }
 
 final class CustomLabel: UILabel {
