@@ -34,6 +34,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         loadList()
     }
     
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
     func loadList() {
         let ref = FIRDatabase.database().reference().child("ShoppingLists")
         if let listId = UserDefaults.standard.string(forKey: "listId") {
@@ -93,6 +97,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        becomeFirstResponder()
+        
         var actions = [UITableViewRowAction]()
         
         let edit = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "ערוך", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
