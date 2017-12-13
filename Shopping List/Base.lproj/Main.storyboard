@@ -49,10 +49,11 @@
                                                     <rect key="frame" x="15" y="11" width="384" height="22"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebN-oO-LDh">
-                                                            <rect key="frame" x="12" y="-4.3333333333333321" width="48" height="30"/>
+                                                            <rect key="frame" x="12" y="-4.3333333333333321" width="48" height="31"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="lSl-rF-rs4"/>
                                                             </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <state key="normal" title="סיים"/>
                                                             <connections>
                                                                 <action selector="didTapEndEditing:" destination="MwJ-9S-PQS" eventType="touchUpInside" id="mZK-Yq-UmQ"/>
@@ -103,30 +104,33 @@
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cx8-jf-oM1">
-                                        <rect key="frame" x="242" y="7" width="44" height="30"/>
+                                        <rect key="frame" x="242" y="6.6666666666666288" width="44" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="jTO-4H-2dC"/>
+                                            <constraint firstAttribute="width" constant="44" id="jTO-4H-2dC"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="שתף"/>
                                         <connections>
                                             <action selector="didTapShare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HUS-UB-ohZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxT-fo-CEK">
-                                        <rect key="frame" x="296" y="7" width="44" height="30"/>
+                                        <rect key="frame" x="296" y="6.6666666666666288" width="44" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="mFu-Vq-tJH"/>
+                                            <constraint firstAttribute="width" constant="44" id="mFu-Vq-tJH"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="נקה"/>
                                         <connections>
                                             <action selector="didTapClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jfC-na-eS7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cSX-5I-hQA">
-                                        <rect key="frame" x="350" y="7" width="54" height="30"/>
+                                        <rect key="frame" x="350" y="6.6666666666666288" width="54" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="54" id="yvV-rp-vD1"/>
+                                            <constraint firstAttribute="width" constant="54" id="yvV-rp-vD1"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="הסתר מסומנים"/>
                                         <connections>
                                             <action selector="didTapHide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W7x-O1-7jX"/>
@@ -138,7 +142,6 @@
                                     <constraint firstItem="YxT-fo-CEK" firstAttribute="centerY" secondItem="cSX-5I-hQA" secondAttribute="centerY" id="56V-1G-a39"/>
                                     <constraint firstItem="cSX-5I-hQA" firstAttribute="centerY" secondItem="lRq-hd-eDW" secondAttribute="centerY" id="E4U-dS-7Th"/>
                                     <constraint firstItem="Cx8-jf-oM1" firstAttribute="centerY" secondItem="YxT-fo-CEK" secondAttribute="centerY" id="VOX-QQ-QjE"/>
-                                    <constraint firstItem="Cx8-jf-oM1" firstAttribute="leading" secondItem="lRq-hd-eDW" secondAttribute="leading" constant="242" id="YBL-m8-ubT"/>
                                     <constraint firstAttribute="trailing" secondItem="cSX-5I-hQA" secondAttribute="trailing" constant="10" id="YZp-TE-6lO"/>
                                     <constraint firstItem="YxT-fo-CEK" firstAttribute="leading" secondItem="Cx8-jf-oM1" secondAttribute="trailing" constant="10" id="gAR-HU-gWx"/>
                                     <constraint firstAttribute="height" constant="44" id="k4E-gu-1UF"/>
@@ -158,6 +161,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableBottomConstraint" destination="6vo-Bc-QRy" id="qq9-PN-EAx"/>
                         <outlet property="tableView" destination="xSO-8V-RzJ" id="QA2-PA-Oqn"/>
                     </connections>
                 </viewController>
