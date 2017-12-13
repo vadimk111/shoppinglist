@@ -50,13 +50,15 @@ class ItemTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func edit() {
-        textField.text =  label.text
+        textField.text = label.text
         editView.isHidden = false
+        label.isHidden = true
         textField.becomeFirstResponder()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         editView.isHidden = true
+        label.isHidden = false
         delegate?.itemTableViewCell(self, endEditingWith: textField.text)
     }
     
