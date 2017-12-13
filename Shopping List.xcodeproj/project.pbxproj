@@ -40,7 +40,6 @@
 		3C3DD1E2C2B98D27CBD649E2 /* Pods_Shopping_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCC550D614446D7958DA904 /* Pods-Shopping List Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopping List Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shopping List Widget/Pods-Shopping List Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		BF37A97A1DE62515005FE8E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BF63EC721DE8C36100583773 /* Shopping List.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shopping List.entitlements"; sourceTree = "<group>"; };
 		BF8916B81DE7871E00B6684A /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		BFCC43E71DD10E8900C77D31 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCC43EA1DD10E8900C77D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,9 +52,6 @@
 		BFCC43FE1DD11F1400C77D31 /* NewItemTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewItemTableViewHeader.xib; sourceTree = "<group>"; };
 		BFCC44001DD12A5C00C77D31 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		BFE748101DE0BA3200C76CF8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		BFE748131DE0BA3200C76CF8 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		BFE748161DE0BA3200C76CF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		BFE748181DE0BA3200C76CF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEF965CCB013FE6766401067 /* Pods_Shopping_List_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_List_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				BFCC43E91DD10E8900C77D31 /* Shopping List */,
-				BFE748121DE0BA3200C76CF8 /* Shopping List Widget */,
 				BFE7480F1DE0BA3200C76CF8 /* Frameworks */,
 				BFCC43E81DD10E8900C77D31 /* Products */,
 				F862365981DA8DEFA53DC27C /* Pods */,
@@ -93,7 +88,6 @@
 		BFCC43E91DD10E8900C77D31 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				BF63EC721DE8C36100583773 /* Shopping List.entitlements */,
 				BFCC43EA1DD10E8900C77D31 /* AppDelegate.swift */,
 				BFCC43F11DD10E8900C77D31 /* Assets.xcassets */,
 				BF37A97A1DE62515005FE8E1 /* GoogleService-Info.plist */,
@@ -117,16 +111,6 @@
 				FEF965CCB013FE6766401067 /* Pods_Shopping_List_Widget.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BFE748121DE0BA3200C76CF8 /* Shopping List Widget */ = {
-			isa = PBXGroup;
-			children = (
-				BFE748131DE0BA3200C76CF8 /* TodayViewController.swift */,
-				BFE748151DE0BA3200C76CF8 /* MainInterface.storyboard */,
-				BFE748181DE0BA3200C76CF8 /* Info.plist */,
-			);
-			path = "Shopping List Widget";
 			sourceTree = "<group>";
 		};
 		F862365981DA8DEFA53DC27C /* Pods */ = {
@@ -180,7 +164,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -241,9 +225,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Shopping List/Pods-Shopping List-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -256,13 +247,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shopping List-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -297,14 +291,6 @@
 				BFCC43F41DD10E8900C77D31 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		BFE748151DE0BA3200C76CF8 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFE748161DE0BA3200C76CF8 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -411,7 +397,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Shopping List/Shopping List.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C57Q64SZ95;
 				INFOPLIST_FILE = "Shopping List/Info.plist";
@@ -430,7 +415,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Shopping List/Shopping List.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: vadim kononov (C57Q64SZ95)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C57Q64SZ95;

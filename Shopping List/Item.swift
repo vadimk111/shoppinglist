@@ -16,14 +16,14 @@ class Item: NSObject {
     
     var title: String!
     var isSelected: Bool = false
-    private var ref: FIRDatabaseReference?
+    private var ref: DatabaseReference?
     
     init(title: String, isSelected: Bool) {
         self.title = title
         self.isSelected = isSelected
     }
     
-    init(snapshot: FIRDataSnapshot) {
+    init(snapshot: DataSnapshot) {
         ref = snapshot.ref
         let snapshotValue = snapshot.value as! [String: AnyObject]
         title = snapshotValue[titleKey] as! String

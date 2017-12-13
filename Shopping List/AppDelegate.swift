@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FIRApp.configure()
+        FirebaseApp.configure()
         return true
     }
 
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let absoluteUrl = url.absoluteString
-        let listId = absoluteUrl.substring(from: absoluteUrl.index(absoluteUrl.startIndex, offsetBy: "list.shopping://".characters.count))
+        let listId = absoluteUrl.substring(from: absoluteUrl.index(absoluteUrl.startIndex, offsetBy: "list.shopping://".count))
         UserDefaults.standard.setValue(listId, forKey: "listId")
         UserDefaults.standard.synchronize()
         

@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
-    var list: FIRDatabaseReference!
+    var list: DatabaseReference!
     var items: [Item] = []
     var showCompleted = true
     
@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func loadList() {
-        let ref = FIRDatabase.database().reference().child("ShoppingLists")
+        let ref = Database.database().reference().child("ShoppingLists")
         if let listId = UserDefaults.standard.string(forKey: "listId") {
             list = ref.child(listId)
         } else {
@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         list.observe(.value, with: { snapshot in
             self.items = []
             for child in snapshot.children {
-                self.items.append(Item(snapshot: child as! FIRDataSnapshot))
+                self.items.append(Item(snapshot: child as! DataSnapshot))
             }
             self.tableView.reloadData()
         })
@@ -123,9 +123,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func newItemTableViewHeaderDidTapContinue(newItemTableViewHeader: NewItemTableViewHeader) {
-        let str = newItemTableViewHeader.textField.text
-        if (str?.characters.count)! > 0 {
-            list.childByAutoId().setValue(Item(title: str!, isSelected: false).toAnyObject())
+        if let str = newItemTableViewHeader.textField.text, str.count > 0 {
+            list.childByAutoId().setValue(Item(title: str, isSelected: false).toAnyObject())
         }
     }
         
