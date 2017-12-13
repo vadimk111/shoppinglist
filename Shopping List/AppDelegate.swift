@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let absoluteUrl = url.absoluteString
-        let listId = absoluteUrl.substring(from: absoluteUrl.index(absoluteUrl.startIndex, offsetBy: "list.shopping://".count))
+        let listId = String(absoluteUrl[absoluteUrl.index(absoluteUrl.startIndex, offsetBy: "list.shopping://".count)...])
         UserDefaults.standard.setValue(listId, forKey: "listId")
         UserDefaults.standard.synchronize()
         

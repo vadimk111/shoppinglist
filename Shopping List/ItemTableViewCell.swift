@@ -38,9 +38,9 @@ class ItemTableViewCell: UITableViewCell, UITextFieldDelegate {
     func populate(item: Item) {
         let att = NSMutableAttributedString(string: item.title)
         let range = NSMakeRange(0, item.title.count)
-        att.addAttributes([NSFontAttributeName: UIFont.init(name: "HelveticaNeue", size: 18) as Any], range: range)
+        att.addAttributes([NSAttributedStringKey.font: UIFont.init(name: "HelveticaNeue", size: 18) as Any], range: range)
         if item.isSelected {
-            att.addAttributes([NSStrikethroughStyleAttributeName: NSNumber(value: NSUnderlineStyle.styleThick.rawValue)], range: range)
+            att.addAttributes([NSAttributedStringKey.strikethroughStyle: NSNumber(value: NSUnderlineStyle.styleThick.rawValue)], range: range)
         }
         label.attributedText = att
     }
