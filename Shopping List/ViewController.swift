@@ -151,7 +151,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func didTapShare(_ sender: UIButton) {
-        if let url = NSURL(string: "list.shopping://" + list.key) {
+        if let url = NSURL(string: "list.shopping://" + (list.key ?? "")) {
             let objectsToShare = ["רשימת הקניות:", url] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityVC.popoverPresentationController?.sourceView = sender
